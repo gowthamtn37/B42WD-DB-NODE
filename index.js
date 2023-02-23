@@ -12,7 +12,6 @@ console.log(process.env.MONGO_URL);
 //.env = environmental variable
 // const MONGO_URL = "mongodb://127.0.0.1";
 
-//const MONGO_URL = "mongodb+srv://gowtham:gow123@cluster0.mjiigi4.mongodb.net";
 const MONGO_URL = process.env.MONGO_URL;
 
 const client = new MongoClient(MONGO_URL); // dial
