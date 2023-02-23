@@ -6,7 +6,8 @@ import express from "express"; // "type": "module"
 import { MongoClient } from "mongodb";
 
 const app = express();
-const PORT = 4000;
+//const PORT = 4000;
+const PORT = process.env.PORT; //auto assign
 
 console.log(process.env.MONGO_URL);
 //.env = environmental variable
