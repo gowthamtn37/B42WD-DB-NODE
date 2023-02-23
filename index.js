@@ -99,6 +99,7 @@ app.put("/movies/:id", express.json(), async function (request, response) {
     .updateOne({ id: id }, { $set: data });
 
   console.log(result);
+
   response.send(result);
 });
 
