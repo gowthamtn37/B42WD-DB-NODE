@@ -6,8 +6,8 @@ import express from "express"; // "type": "module"
 import { MongoClient } from "mongodb";
 
 const app = express();
-//const PORT = 4000;
-const PORT = process.env.PORT; //auto assign
+const PORT = 4000;
+//const PORT = process.env.PORT; //auto assign
 
 console.log(process.env.MONGO_URL);
 //.env = environmental variable
@@ -19,6 +19,8 @@ const client = new MongoClient(MONGO_URL); // dial
 // Top level await
 await client.connect(); // call
 console.log("Mongo is connected !!!  ");
+
+app.use(express.json());
 
 //1
 app.get("/", function (request, response) {
@@ -97,9 +99,10 @@ app.put("/movies/:id", express.json(), async function (request, response) {
     .updateOne({ id: id }, { $set: data });
 
   console.log(result);
-  result.deletedCount >= 1
-    ? response.send(data)
-    : response.status(404).send({ message: "movie not found" });
+  // result
+  // ?
+  response.send(result);
+  // : response.status(404).send({ message: "movie not found" });
 });
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
