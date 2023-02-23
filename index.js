@@ -99,10 +99,7 @@ app.put("/movies/:id", express.json(), async function (request, response) {
     .updateOne({ id: id }, { $set: data });
 
   console.log(result);
-  // result
-  // ?
   response.send(result);
-  // : response.status(404).send({ message: "movie not found" });
 });
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
