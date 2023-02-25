@@ -7,6 +7,7 @@ import {
   deleteMovie,
   updateMovies,
 } from "../service/movies.service.js";
+
 //2
 router.get("/", async function (request, response) {
   // cursor=> pagination
@@ -56,6 +57,7 @@ router.delete("/:id", async function (request, response) {
 
 // update
 router.put("/:id", express.json(), async function (request, response) {
+  res.set("Access-Control-Allow-Origin", "*");
   const { id } = request.params;
   const data = request.body;
   const result = await updateMovies(id, data);

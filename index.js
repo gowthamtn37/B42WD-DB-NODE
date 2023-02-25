@@ -23,7 +23,6 @@ await client.connect(); // call
 console.log("Mongo is connected !!!  ");
 
 app.use(cors()); //3rd party middleware
-
 app.use(express.json()); //inbuit middleware
 //intercepts > apply middleware > converting body to json
 //1
@@ -33,7 +32,6 @@ app.get("/", function (request, response) {
 //http://localhost:4000/
 
 app.use("/movies", moviesRouter);
-
 //app.use("/users", userRouter);
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
