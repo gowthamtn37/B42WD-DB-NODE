@@ -57,7 +57,7 @@ router.delete("/:id", async function (request, response) {
 
 // update
 router.put("/:id", express.json(), async function (request, response) {
-  response.header("Access-Control-Allow-Origin", "*");
+  request.header("Access-Control-Allow-Origin", "*");
   const { id } = request.params;
   const data = request.body;
   const result = await updateMovies(id, data);
