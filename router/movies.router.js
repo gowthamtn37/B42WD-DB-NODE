@@ -27,8 +27,8 @@ router.get("/:id", async function (request, response) {
   const movie = await getMovieByID(id);
 
   movie
-    ? response.status(404).send(movie)
-    : response.send({ message: "movie not found" });
+    ? response.send(movie)
+    : response.status(404).send({ message: "movie not found" });
 });
 //http://localhost:4000/movies/id
 
@@ -55,7 +55,7 @@ router.delete("/:id", async function (request, response) {
 });
 
 // update
-router.put("  /:id", express.json(), async function (request, response) {
+router.put("/:id", express.json(), async function (request, response) {
   const { id } = request.params;
   const data = request.body;
   const result = await updateMovies(id, data);
