@@ -51,7 +51,7 @@ router.post("/", auth, express.json(), async function (request, response) {
 });
 
 //delete
-router.delete("/:id", auth, async function (request, response) {
+router.delete("/:id", async function (request, response) {
   const { id } = request.params;
   const result = await deleteMovie(id);
 
