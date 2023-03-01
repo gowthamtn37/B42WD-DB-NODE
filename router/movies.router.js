@@ -10,7 +10,7 @@ import {
 } from "../service/movies.service.js";
 
 //2
-router.get("/", async function (request, response) {
+router.get("/", auth, async function (request, response) {
   console.log(request.query);
   // cursor=> pagination
   if (request.query.rating) {
@@ -22,7 +22,7 @@ router.get("/", async function (request, response) {
 //http://localhost:4000/movies
 
 //3 Dummy => mockapi
-router.get("/:id", async function (request, response) {
+router.get("/:id", auth, async function (request, response) {
   //console.log(request.params);
 
   const { id } = request.params;
@@ -40,7 +40,7 @@ router.get("/:id", async function (request, response) {
 
 //post
 //express.json() - middleware
-router.post("/", express.json(), async function (request, response) {
+router.post("/", auth, express.json(), async function (request, response) {
   const data = request.body;
   //db.movies.insertMany(data)
   //db.movies.insertOne(data)
@@ -51,7 +51,7 @@ router.post("/", express.json(), async function (request, response) {
 });
 
 //delete
-router.delete("/:id", async function (request, response) {
+router.delete("/:id", auth, async function (request, response) {
   const { id } = request.params;
   const result = await deleteMovie(id);
 
