@@ -10,7 +10,7 @@ import {
 } from "../service/movies.service.js";
 
 //2
-router.get("/", auth, async function (request, response) {
+router.get("/", async function (request, response) {
   console.log(request.query);
   // cursor=> pagination
   if (request.query.rating) {
