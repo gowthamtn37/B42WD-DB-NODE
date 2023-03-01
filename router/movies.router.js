@@ -22,7 +22,7 @@ router.get("/", async function (request, response) {
 //http://localhost:4000/movies
 
 //3 Dummy => mockapi
-router.get("/:id", auth, async function (request, response) {
+router.get("/:id", async function (request, response) {
   //console.log(request.params);
 
   const { id } = request.params;
@@ -40,7 +40,7 @@ router.get("/:id", auth, async function (request, response) {
 
 //post
 //express.json() - middleware
-router.post("/", auth, express.json(), async function (request, response) {
+router.post("/", express.json(), async function (request, response) {
   const data = request.body;
   //db.movies.insertMany(data)
   //db.movies.insertOne(data)
