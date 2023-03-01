@@ -37,8 +37,9 @@ router.get("/:id", async function (request, response) {
 //express.json() - middleware
 router.post("/", express.json(), async function (request, response) {
   const data = request.body;
-
   //db.movies.insertMany(data)
+  //db.movies.insertOne(data)
+
   const result = await createMovie(data);
 
   response.send(result);
@@ -60,9 +61,7 @@ router.put("/:id", express.json(), async function (request, response) {
   const { id } = request.params;
   const data = request.body;
   const result = await updateMovies(id, data);
-
   console.log(result);
-
   response.send(result);
 });
 

@@ -10,7 +10,7 @@ export async function deleteMovie(id) {
   return await client.db("B42WD2").collection("movies").deleteOne({ id: id });
 }
 export async function createMovie(data) {
-  return await client.db("B42WD2").collection("movies").insertMany(data);
+  return await client.db("B42WD2").collection("movies").insertOne(data);
 }
 export async function getMovieByID(id) {
   return await client.db("B42WD2").collection("movies").findOne({ id: id });
