@@ -1,4 +1,5 @@
 import express from "express";
+import { auth } from "../middleware/auth.js";
 const router = express.Router();
 import {
   getMovies,
@@ -10,8 +11,12 @@ import {
 
 //2
 router.get("/", async function (request, response) {
+  console.log(request.query);
   // cursor=> pagination
-  const movie = await getMovies();
+  if (request.query.rating) {
+    request.query.rating = +request.query.rating;
+  }
+  const movie = await getMovies(request.query);
   response.send(movie);
 });
 //http://localhost:4000/movies
