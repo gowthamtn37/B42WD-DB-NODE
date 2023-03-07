@@ -7,6 +7,7 @@ import { MongoClient } from "mongodb";
 import moviesRouter from "./router/movies.router.js";
 import usersRouter from "./router/users.router.js";
 import cors from "cors";
+import { auth } from "./middleware/auth.js";
 
 const app = express();
 // const PORT = 4000;
@@ -57,7 +58,7 @@ const mobiles = [
     company: "Xiomi",
   },
 ];
-app.get("/mobiles", async function (request, response) {
+app.get("/mobiles", auth, async function (request, response) {
   const result = await client
     .db("B42WD2")
     .collection("mobiles")
@@ -68,10 +69,11 @@ app.get("/mobiles", async function (request, response) {
 //http://localhost:4000/mobiles
 
 app.post("/mobiles", express.json(), async function (request, response) {
+  const data = request.body;
   const result = await client
     .db("B42WD2")
     .collection("mobiles")
-    .insertMany(mobiles);
+    .insertMany(data);
   response.send(result);
 });
 

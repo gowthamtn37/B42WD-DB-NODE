@@ -62,7 +62,7 @@ router.delete("/:id", async function (request, response) {
 });
 
 // update
-router.put("/:id", express.json(), async function (request, response) {
+router.put("/:id", async function (request, response) {
   const { id } = request.params;
   const data = request.body;
   const result = await updateMovies(id, data);
